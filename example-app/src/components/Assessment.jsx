@@ -6,18 +6,31 @@ const Assessment = () => {
 
   const [request, setRequest] = useState([])
 
-  axios.get("https://api.hatchways.io/assessment/students")
-    .then(res => {
-      setRequest(res.data.students)
-    })
+  const getInfo = () => {
+    axios.get("https://api.hatchways.io/assessment/students")
+      .then(res => {
+        setRequest(res.data.students)
+      })
+  }
+
+  const studentList = request.map((student) => {
+
+    return (
+      <p>{student.city}</p>
+    )
+
+  })
 
   useEffect(() => {
-  }, [request])
+    getInfo();
+  }, [])
+
+  console.log(request)
 
   return (
     <h1>
       Contents
-      {request[0]}
+      {studentList}
     </h1>
 
   )
