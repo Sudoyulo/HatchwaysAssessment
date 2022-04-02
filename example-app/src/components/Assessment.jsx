@@ -13,7 +13,19 @@ const Assessment = () => {
       })
   }
 
+  const calculateAverage = (grades) => {
+
+    let sum = 0;
+    grades.forEach((grade) => {
+      sum += Number(grade);
+    })
+    return sum / grades.length;
+
+  }
+
   const studentList = request.map((student) => {
+
+    let average = Math.round(calculateAverage(student.grades) * 100) / 100;
 
     return (
       <div className="student">
@@ -22,7 +34,7 @@ const Assessment = () => {
         <p>Email: {student.email}</p>
         <p>Company: {student.company}</p>
         <p>Skill: {student.skill}</p>
-        <p>Average: </p>
+        <p>Average: {average}%</p>
 
 
 
