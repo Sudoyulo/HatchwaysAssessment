@@ -16,7 +16,17 @@ const Assessment = () => {
   const studentList = request.map((student) => {
 
     return (
-      <p>{student.city}</p>
+      <div className="student">
+        <img src={student.pic} alt="profile" />
+        <p>{student.firstName} {student.lastName}</p>
+        <p>Email: {student.email}</p>
+        <p>Company: {student.company}</p>
+        <p>Skill: {student.skill}</p>
+        <p>Average: </p>
+
+
+
+      </div>
     )
 
   })
