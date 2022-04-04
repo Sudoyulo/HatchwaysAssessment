@@ -1,6 +1,7 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import "./assessment.css"
 
 const Assessment = () => {
 
@@ -14,13 +15,9 @@ const Assessment = () => {
   }
 
   const calculateAverage = (grades) => {
-
     let sum = 0;
-    grades.forEach((grade) => {
-      sum += Number(grade);
-    })
+    grades.forEach((grade) => { sum += Number(grade) })
     return sum / grades.length;
-
   }
 
   const studentList = request.map((student) => {
@@ -35,9 +32,6 @@ const Assessment = () => {
         <p>Company: {student.company}</p>
         <p>Skill: {student.skill}</p>
         <p>Average: {average}%</p>
-
-
-
       </div>
     )
 
@@ -47,13 +41,10 @@ const Assessment = () => {
     getInfo();
   }, [])
 
-  console.log(request)
-
   return (
-    <h1>
-      Contents
+    <p>
       {studentList}
-    </h1>
+    </p>
 
   )
 
