@@ -1,10 +1,13 @@
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  background-color: grey;
+  background-color: lightgray;
+
 }
 
 #information {
+
+  border-radius: 10px;
   background-color: white;
   margin-left: 20vw;
   margin-right: 20vw;
@@ -17,15 +20,32 @@ body {
 .student {
   display:flex;
   flex-direction: row;
+  padding: 5px;
+  border: 1px solid lightgray;
+}
+
+.profile-picture {
+  margin: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .avatar{
-  margin: 50%;
-  height: 70%;
-  border: 1px solid grey;
+  height: 90%;
+  border: 1px solid lightgray;
   border-radius: 150px;
 }
 
+.student-traits {
+  margin: 5px;
+  margin-left: 15%;
+}
+
+.student-traits p, h1 {
+  margin: 0px;
+}
+
 .full-name{
-  font-size: larger;
+  font-size: 40px;
+  margin-left: -5%
 }
