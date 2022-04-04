@@ -30,11 +30,13 @@ const Assessment = () => {
           <img className="avatar" src={student.pic} alt="profile" />
         </div>
         <div className="student-traits">
-          <h1 className="full-name">{student.firstName.toUpperCase()} {student.lastName.toUpperCase()}</h1>
-          <p>Email: {student.email}</p>
-          <p>Company: {student.company}</p>
-          <p>Skill: {student.skill}</p>
-          <p>Average: {average}%</p>
+          <p className="full-name">{student.firstName.toUpperCase()} {student.lastName.toUpperCase()}</p>
+          <div className="traits">
+            <p>Email: {student.email}</p>
+            <p>Company: {student.company}</p>
+            <p>Skill: {student.skill}</p>
+            <p>Average: {average}%</p>
+          </div>
         </div>
       </div>
     )

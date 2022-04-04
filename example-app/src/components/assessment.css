@@ -1,8 +1,8 @@
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Raleway', sans-serif;
   background-color: lightgray;
-
+  font-size: 1.5vw;
 }
 
 #information {
@@ -22,30 +22,33 @@ body {
   flex-direction: row;
   padding: 5px;
   border: 1px solid lightgray;
+  height: 15vw;
 }
 
 .profile-picture {
-  margin: 10px;
+  margin: 30px;
   display: flex;
   align-items: center;
 }
 
 .avatar{
-  height: 90%;
+  height: 10vw;
   border: 1px solid lightgray;
   border-radius: 150px;
 }
 
 .student-traits {
   margin: 5px;
-  margin-left: 15%;
-}
-
-.student-traits p, h1 {
-  margin: 0px;
 }
 
 .full-name{
-  font-size: 40px;
-  margin-left: -5%
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 3vw;
+  margin: 10px;
+}
+
+.traits p{
+  margin: 7px;
+  margin-left: 10%;
 }
