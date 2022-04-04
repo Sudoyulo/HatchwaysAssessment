@@ -26,12 +26,16 @@ const Assessment = () => {
 
     return (
       <div className="student">
-        <img src={student.pic} alt="profile" />
-        <p>{student.firstName} {student.lastName}</p>
-        <p>Email: {student.email}</p>
-        <p>Company: {student.company}</p>
-        <p>Skill: {student.skill}</p>
-        <p>Average: {average}%</p>
+        <div>
+          <img className="avatar" src={student.pic} alt="profile" />
+        </div>
+        <div>
+          <p className="full-name">{student.firstName} {student.lastName}</p>
+          <p>Email: {student.email}</p>
+          <p>Company: {student.company}</p>
+          <p>Skill: {student.skill}</p>
+          <p>Average: {average}%</p>
+        </div>
       </div>
     )
 
@@ -42,9 +46,9 @@ const Assessment = () => {
   }, [])
 
   return (
-    <p>
+    <div id="information">
       {studentList}
-    </p>
+    </div>
 
   )
 
