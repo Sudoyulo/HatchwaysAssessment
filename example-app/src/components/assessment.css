@@ -22,11 +22,11 @@ body {
   flex-direction: row;
   padding: 5px;
   border: 1px solid lightgray;
-  height: 15vw;
+  height: 20vw;
 }
 
 .profile-picture {
-  margin: 30px;
+  margin: 2vw;
   display: flex;
   align-items: center;
 }
@@ -39,16 +39,34 @@ body {
 
 .student-traits {
   margin: 5px;
+  width: 100%;
 }
 
 .full-name{
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  font-size: 3vw;
-  margin: 10px;
+  font-size: 2vw;
+  margin: 5px;
 }
 
 .traits p{
-  margin: 7px;
+  margin: 0.5vh;
   margin-left: 10%;
+  width: 90%;
+}
+
+@media screen and (min-width: 1251px) {
+  body{
+    font-size: 2.2vw;
+  }
+
+  .traits p {
+    margin: 7px;
+  }
+
+  .full-name {
+    font-size: 3vw;
+    margin: 10px;
+  }
+
 }
