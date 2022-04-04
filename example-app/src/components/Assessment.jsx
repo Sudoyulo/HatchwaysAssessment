@@ -49,6 +49,7 @@ const Assessment = () => {
 
   return (
     <div id="information">
+      <input className="search" />
       {studentList}
     </div>
 

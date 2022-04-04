@@ -1,12 +1,17 @@
-
 body {
   font-family: 'Raleway', sans-serif;
   background-color: lightgray;
   font-size: 2vw;
 }
 
-#information {
+.search {
+  width: 90%;
+  height: 3vh;
+  border: none;
+  outline: none;
+}
 
+#information {
   border-radius: 10px;
   background-color: white;
   margin-left: 10vw;
@@ -18,7 +23,7 @@ body {
 }
 
 .student {
-  display:flex;
+  display: flex;
   flex-direction: row;
   padding: 15px;
   border: 1px solid lightgray;
@@ -31,7 +36,7 @@ body {
   align-items: center;
 }
 
-.avatar{
+.avatar {
   height: 10vw;
   border: 1px solid lightgray;
   border-radius: 150px;
@@ -45,14 +50,14 @@ body {
   justify-content: center;
 }
 
-.full-name{
+.full-name {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 2vw;
   margin: 5px;
 }
 
-.traits p{
+.traits p {
   margin: 0;
   margin-left: 5%;
   width: 90%;
