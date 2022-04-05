@@ -80,7 +80,6 @@ const Assessment = () => {
     setfilter([...request].filter((student) => {
       let found = false;
       student.tag.forEach((tag) => {
-        console.log(tag, key)
         if (tag.toLowerCase().includes(key)) { found = true }
       })
       if (found) { console.log("yes"); return student }
@@ -100,7 +99,9 @@ const Assessment = () => {
         <input className="search" type="text" placeholder="Search by name" onChange={(e) => { searchbar(e.target.value.toUpperCase()) }} />
         <input className="search" type="text" placeholder="Search by tag" onChange={(e) => { searchtag(e.target.value.toLowerCase()) }} />
       </div>
-      {studentList}
+      <div className="list">
+        {studentList}
+      </div>
     </div>
   )
 

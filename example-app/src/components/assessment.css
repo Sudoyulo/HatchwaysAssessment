@@ -9,7 +9,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-bottom: 1px solid black;
 }
 
 .search {
@@ -24,7 +23,7 @@ body {
 }
 
 #information {
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: white;
   margin-left: 10vw;
   margin-right: 10vw;
@@ -32,6 +31,7 @@ body {
   margin-bottom: 10vh;
   height: 80vh;
   overflow: auto;
+  box-shadow: 1px 1px gray;
 }
 
 .student {
@@ -45,7 +45,6 @@ body {
   display: flex;
   flex-direction: row;
   padding: 15px;
-  /* height: 15vw; */
 }
 
 .profile-picture {
@@ -101,10 +100,26 @@ body {
 .tags {
   display: flex;
   flex-direction: row;
+  margin-left: 2vw;
+  padding: 1vw;
 }
 
-.tags p {
-  background-color: gray;
+.tags button {
+  background-color: lightgray;
   border-radius: 5px;
+  font-size: 1vw;
+  height: 3vw;
+  padding: 0.6vw;
+  margin-right: 1vw;
   color: black;
+  overflow: auto;
+}
+
+.tag-input {
+  font-size: 2vw;
+  margin-left: 2vw;
+  padding: 1vw;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
 }

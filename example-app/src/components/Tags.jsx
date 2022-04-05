@@ -4,19 +4,17 @@ const Tags = (props) => {
 
   const { request, setRequest, stuId } = props;
 
-
-  const addTag = () => {
+  const addTag = (value) => {
 
     let copy = [...request];
-    copy[stuId].tag.push("1")
-    console.log(copy)
+    copy[stuId].tag.push(value)
     setRequest(copy)
 
   }
 
   const myTags = request[stuId].tag.map((tag) => {
     return (
-      <p> {tag} </p>
+      <button> {tag} </button>
     )
   })
 
@@ -25,7 +23,7 @@ const Tags = (props) => {
       <div className="tags">
         {myTags}
       </div>
-      <button onClick={() => { addTag() }} > Add Tag</button>
+      <input className="tag-input" placeholder="Add a tag" onKeyPress={e => { if (e.key === "Enter") { addTag(e.target.value); e.target.value = "" } }} />
     </div>
   )
 
