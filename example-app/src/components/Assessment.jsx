@@ -9,7 +9,7 @@ const Assessment = () => {
 
   const [data, setdata] = useState([])
   const [filter, setfilter] = useState([])
-  const [isActive, setIsActive] = useState([0])
+  const [expanded, setExpanded] = useState([0])
 
   const getInfo = () => {
     axios.get("https://api.hatchways.io/assessment/students")
@@ -32,11 +32,11 @@ const Assessment = () => {
   const studentList = filter.map((student, index) => {
 
     const toggleClass = (id) => {
-      if (isActive.includes(id)) {
-        setIsActive(isActive.filter((stu) => { return stu !== id }))
+      if (expanded.includes(id)) {
+        setExpanded(expanded.filter((stu) => { return stu !== id }))
         student.show = !student.show;
       } else {
-        setIsActive([...isActive].concat([id]))
+        setExpanded([...expanded].concat([id]))
         student.show = !student.show;
       }
     }
@@ -57,7 +57,7 @@ const Assessment = () => {
               <p>Company: {student.company}</p>
               <p>Skill: {student.skill}</p>
               <p>Average: {average}%</p>
-              <TestScores grades={student.grades} active={isActive} stuId={student.id} />
+              <TestScores grades={student.grades} expand={expanded} stuId={student.id} />
               <Tags data={data} setdata={setdata} stuId={student.id - 1} />
             </div>
           </div>

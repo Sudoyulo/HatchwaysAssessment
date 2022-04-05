@@ -1,17 +1,16 @@
 
-
 const TestScores = (props) => {
 
-  const { grades, active, stuId } = props;
+  const { grades, expand, stuId } = props;
   let name = "average-scores-show";
 
-  let scores = grades.map((test, index) => {
+  const scores = grades.map((test, index) => {
     return (
-      <p key={index}> Test {index + 1} : {test} %</p>
+      <p key={index + test}> Test {index + 1} : {test} %</p>
     )
   })
 
-  if (active.includes(stuId)) {
+  if (expand.includes(stuId)) {
     name = "average-scores-show"
   } else {
     name = "average-scores-hide"
