@@ -8,7 +8,7 @@ const Assessment = () => {
 
   const [request, setRequest] = useState([])
   const [filter, setfilter] = useState([])
-  const [isActive, setIsActive] = useState(true)
+  const [isActive, setIsActive] = useState(0)
 
   const getInfo = () => {
     axios.get("https://api.hatchways.io/assessment/students")
@@ -26,18 +26,22 @@ const Assessment = () => {
 
   const studentList = filter.map((student, index) => {
 
-    const toggleClass = () => {
-      setIsActive(!isActive)
+    const toggleClass = (id) => {
+      if (isActive !== student.id) {
+        setIsActive(id)
+      } else {
+        setIsActive(0)
+      }
     }
 
 
     let average = Math.round(calculateAverage(student.grades) * 100) / 100;
 
-    let scores = student.grades.map((test, index) => {
-      return (
-        <p key={index}> Test {index + 1} : {test} %</p>
-      )
-    })
+    // let scores = student.grades.map((test, index) => {
+    //   return (
+    //     <p key={index}> Test {index + 1} : {test} %</p>
+    //   )
+    // })
 
     return (
       <div className="student" key={index}>
@@ -53,14 +57,12 @@ const Assessment = () => {
               <p>Company: {student.company}</p>
               <p>Skill: {student.skill}</p>
               <p>Average: {average}%</p>
-              <div className={isActive ? "average-scores-show" : "average-scores-hide"}>
-                {scores}
-              </div>
+              <TestScores grades={student.grades} active={isActive} stuId={student.id} />
             </div>
           </div>
         </div>
         <div className="expand">
-          <button onClick={toggleClass}>hi</button>
+          <button onClick={() => toggleClass(student.id)}>hi</button>
         </div>
       </div>
     )

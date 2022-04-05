@@ -2,7 +2,8 @@
 
 const TestScores = (props) => {
 
-  const { grades } = props;
+  const { grades, active, stuId } = props;
+  let name = "average-scores-show";
 
   let scores = grades.map((test, index) => {
     return (
@@ -10,8 +11,14 @@ const TestScores = (props) => {
     )
   })
 
+  if (active === stuId) {
+    name = "average-scores-show"
+  } else {
+    name = "average-scores-hide"
+  }
+
   return (
-    <div>
+    <div className={name}>
       {scores}
     </div>
   )
