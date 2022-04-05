@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./assessment.css"
+import TestScores from "./TestScores";
 
 const Assessment = () => {
 
@@ -28,7 +29,7 @@ const Assessment = () => {
 
     let scores = student.grades.map((test, index) => {
       return (
-        <p> Test {index + 1} : {test} %</p>
+        <p key={index}> Test {index + 1} : {test} %</p>
       )
     })
 
@@ -46,14 +47,12 @@ const Assessment = () => {
               <p>Company: {student.company}</p>
               <p>Skill: {student.skill}</p>
               <p>Average: {average}%</p>
-              <div className="average-scores">
-                {scores}
-              </div>
+              <TestScores grades={student.grades} />
             </div>
           </div>
         </div>
         <div className="expand">
-          <button>hi</button>
+          <button onClick={() => { }}>hi</button>
         </div>
       </div>
     )
@@ -78,7 +77,6 @@ const Assessment = () => {
       </div>
       {studentList}
     </div>
-
   )
 
 }

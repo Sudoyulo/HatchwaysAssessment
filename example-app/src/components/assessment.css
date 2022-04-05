@@ -79,3 +79,12 @@ body {
   width: 90%;
   color: gray;
 }
+
+.average-scores-show {
+  margin-top: 10px;
+}
+
+.average-scores-hide {
+  display: none;
+  margin-top: 10px;
+}
