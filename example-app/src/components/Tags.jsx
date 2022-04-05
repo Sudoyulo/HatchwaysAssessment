@@ -2,13 +2,17 @@
 
 const Tags = (props) => {
 
-  const { student } = props;
+  const { student, setRefresh } = props;
 
-  student.tag.push(student.firstName)
+  const addTag = (tag) => {
+    console.log('added')
+    student.tag.push(tag)
+    setRefresh(1)
+  }
 
   return (
     <div>
-      <button>Add tags</button>
+      <button onClick={() => { addTag(student.firstName) }} >{student.tag} hi</button>
     </div>
   )
 
