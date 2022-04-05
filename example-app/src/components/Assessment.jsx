@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./assessment.css"
 import TestScores from "./TestScores";
+import Tags from "./Tags";
 
 const Assessment = () => {
 
@@ -26,8 +27,7 @@ const Assessment = () => {
 
   const studentList = filter.map((student, index) => {
 
-    // student.show = !student.show;
-    // console.log(student.show)
+    student.tag = ["1"];
 
     const toggleClass = (id) => {
       if (isActive.includes(id)) {
@@ -56,6 +56,7 @@ const Assessment = () => {
               <p>Skill: {student.skill}</p>
               <p>Average: {average}%</p>
               <TestScores grades={student.grades} active={isActive} stuId={student.id} />
+              <Tags student={student} />
             </div>
           </div>
         </div>
@@ -68,9 +69,15 @@ const Assessment = () => {
 
   const searchbar = (key) => {
     setfilter([...request].filter((student) => {
-      if (student.firstName.toUpperCase().includes(key) || student.lastName.toUpperCase().includes(key)) {
-        return student;
-      }
+      if (student.firstName.toUpperCase().includes(key) || student.lastName.toUpperCase().includes(key)) { return student; }
+    }))
+  }
+
+  const searchtag = (key) => {
+    setfilter([...request].filter((student) => {
+      if (student.tag.forEach((tag) => {
+        if (tag.includes(key)) { return true }
+      })) { return student; }
     }))
   }
 
@@ -85,7 +92,7 @@ const Assessment = () => {
     <div id="information">
       <div id="header">
         <input className="search" type="text" placeholder="Search by name" onChange={(e) => { searchbar(e.target.value.toUpperCase()) }} />
-        <input className="search" type="text" placeholder="Search by tag" onChange={(e) => { searchbar(e.target.value.toUpperCase()) }} />
+        <input className="search" type="text" placeholder="Search by tag" onChange={(e) => { searchtag(e.target.value.toLowerCase()) }} />
       </div>
       {studentList}
     </div>
