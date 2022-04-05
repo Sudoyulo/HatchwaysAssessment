@@ -43,13 +43,29 @@ const Assessment = () => {
 
   })
 
+  const searchbar = (key) => {
+
+    let requestCopy = [...request];
+
+    studentList(requestCopy.filter((student) => {
+      return student.firstName.toUpperCase().includes(key)
+    })
+    )
+  }
+
   useEffect(() => {
     getInfo();
   }, [])
 
+  useEffect(() => {
+
+  }, [request])
+
   return (
     <div id="information">
-      <input className="search" />
+      <div id="header">
+        <input className="search" type="text" placeholder="Search by name" onChange={(e) => { searchbar(e.target.value.toUpperCase()) }} />
+      </div>
       {studentList}
     </div>
 

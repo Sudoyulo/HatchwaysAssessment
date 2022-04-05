@@ -4,9 +4,19 @@ body {
   font-size: 2vw;
 }
 
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
 .search {
-  width: 90%;
-  height: 3vh;
+  width: 97%;
+  font-family: 'Raleway', sans-serif;
+  height: 10vh;
+  font-size: 2vw;
+  font-weight: 100;
   border: none;
   outline: none;
 }
@@ -53,7 +63,7 @@ body {
 .full-name {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  font-size: 2vw;
+  font-size: 4vw;
   margin: 5px;
 }
 
