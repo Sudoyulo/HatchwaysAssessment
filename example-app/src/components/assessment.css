@@ -97,3 +97,14 @@ body {
   border: none;
   color: gray;
 }
+
+.tags {
+  display: flex;
+  flex-direction: row;
+}
+
+.tags p {
+  background-color: gray;
+  border-radius: 5px;
+  color: black;
+}

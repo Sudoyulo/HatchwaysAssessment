@@ -10,13 +10,17 @@ const Assessment = () => {
   const [request, setRequest] = useState([])
   const [filter, setfilter] = useState([])
   const [isActive, setIsActive] = useState([0])
-  const [refresh, setRefresh] = useState(false)
 
   const getInfo = () => {
     axios.get("https://api.hatchways.io/assessment/students")
       .then(res => {
-        setRequest(res.data.students)
-        setfilter(res.data.students)
+        let list = res.data.students;
+        list.forEach((student) => {
+          student.tag = [student.firstName]
+        })
+
+        setRequest(list)
+        setfilter(list)
       })
   }
 
@@ -27,8 +31,6 @@ const Assessment = () => {
   }
 
   const studentList = filter.map((student, index) => {
-
-    student.tag = [];
 
     const toggleClass = (id) => {
       if (isActive.includes(id)) {
@@ -57,7 +59,7 @@ const Assessment = () => {
               <p>Skill: {student.skill}</p>
               <p>Average: {average}%</p>
               <TestScores grades={student.grades} active={isActive} stuId={student.id} />
-              <Tags student={student} setRefresh={setRefresh} />
+              <Tags request={request} setRequest={setRequest} stuId={student.id - 1} />
             </div>
           </div>
         </div>
@@ -78,18 +80,19 @@ const Assessment = () => {
     setfilter([...request].filter((student) => {
       let found = false;
       student.tag.forEach((tag) => {
-        if (tag.includes(key)) { found = true }
+        console.log(tag, key)
+        if (tag.toLowerCase().includes(key)) { found = true }
       })
-      if (found) { found = false; return student }
+      if (found) { console.log("yes"); return student }
     }))
   }
 
   useEffect(() => {
     getInfo();
-  }, [refresh])
+  }, [])
 
   useEffect(() => {
-  }, [isActive, refresh])
+  }, [request])
 
   return (
     <div id="information">

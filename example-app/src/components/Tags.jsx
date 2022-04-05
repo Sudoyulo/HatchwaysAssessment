@@ -1,18 +1,31 @@
-
+import "./assessment.css"
 
 const Tags = (props) => {
 
-  const { student, setRefresh } = props;
+  const { request, setRequest, stuId } = props;
 
-  const addTag = (tag) => {
-    console.log('added')
-    student.tag.push(tag)
-    setRefresh(1)
+
+  const addTag = () => {
+
+    let copy = [...request];
+    copy[stuId].tag.push("1")
+    console.log(copy)
+    setRequest(copy)
+
   }
+
+  const myTags = request[stuId].tag.map((tag) => {
+    return (
+      <p> {tag} </p>
+    )
+  })
 
   return (
     <div>
-      <button onClick={() => { addTag(student.firstName) }} >{student.tag} hi</button>
+      <div className="tags">
+        {myTags}
+      </div>
+      <button onClick={() => { addTag() }} > Add Tag</button>
     </div>
   )
 
