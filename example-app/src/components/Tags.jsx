@@ -2,17 +2,17 @@ import "./assessment.css"
 
 const Tags = (props) => {
 
-  const { request, setRequest, stuId } = props;
+  const { data, setdata, stuId } = props;
 
   const addTag = (value) => {
-    let copy = [...request];
+    let copy = [...data];
     copy[stuId].tag.push(value)
-    setRequest(copy)
+    setdata(copy)
   }
 
-  const myTags = request[stuId].tag.map((tag) => {
+  const myTags = data[stuId].tag.map((tag, index) => {
     return (
-      <button key={tag}> {tag} </button>
+      <button key={index}> {tag} </button>
     )
   })
 

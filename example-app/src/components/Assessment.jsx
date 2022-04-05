@@ -7,7 +7,7 @@ import Tags from "./Tags";
 
 const Assessment = () => {
 
-  const [request, setRequest] = useState([])
+  const [data, setdata] = useState([])
   const [filter, setfilter] = useState([])
   const [isActive, setIsActive] = useState([0])
 
@@ -18,7 +18,7 @@ const Assessment = () => {
         list.forEach((student) => {
           student.tag = []
         })
-        setRequest(list)
+        setdata(list)
         setfilter(list)
       })
   }
@@ -58,7 +58,7 @@ const Assessment = () => {
               <p>Skill: {student.skill}</p>
               <p>Average: {average}%</p>
               <TestScores grades={student.grades} active={isActive} stuId={student.id} />
-              <Tags request={request} setRequest={setRequest} stuId={student.id - 1} />
+              <Tags data={data} setdata={setdata} stuId={student.id - 1} />
             </div>
           </div>
         </div>
@@ -70,29 +70,26 @@ const Assessment = () => {
   })
 
   const searchbar = (key) => {
-    setfilter([...request].filter((student) => {
+    setfilter([...data].filter((student) => {
       if (student.firstName.toUpperCase().includes(key) || student.lastName.toUpperCase().includes(key)) { return student; }
     }))
   }
 
   const searchtag = (key) => {
-    setfilter([...request].filter((student) => {
+    setfilter([...data].filter((student) => {
       let found = false;
       student.tag.forEach((tag) => {
         if (tag.toLowerCase().includes(key)) { found = true }
       })
-      if (found) { console.log("yes"); return student }
+      if (found) { return student }
     }))
 
-
+    if (key === "") { setfilter(data) }
   }
 
   useEffect(() => {
     getInfo();
   }, [])
-
-  useEffect(() => {
-  }, [request])
 
   return (
     <div id="information">
