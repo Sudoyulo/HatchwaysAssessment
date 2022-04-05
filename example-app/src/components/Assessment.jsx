@@ -25,6 +25,19 @@ const Assessment = () => {
 
   const studentList = filter.map((student, index) => {
 
+    let averageScore = "average-scores-show";
+    let averages = true;
+    let showOrHide = () => {
+      console.log(averages)
+      averages = !averages;
+      if (averages) {
+        averageScore = "average-scores-show"
+      } else {
+        averageScore = "average-scores-hide"
+      }
+
+    }
+
     let average = Math.round(calculateAverage(student.grades) * 100) / 100;
 
     let scores = student.grades.map((test, index) => {
@@ -47,12 +60,14 @@ const Assessment = () => {
               <p>Company: {student.company}</p>
               <p>Skill: {student.skill}</p>
               <p>Average: {average}%</p>
-              <TestScores grades={student.grades} />
+              <div className={averageScore}>
+                {scores}
+              </div>
             </div>
           </div>
         </div>
         <div className="expand">
-          <button onClick={() => { }}>hi</button>
+          <button onClick={() => { showOrHide() }}>hi</button>
         </div>
       </div>
     )
