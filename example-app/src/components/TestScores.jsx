@@ -11,7 +11,7 @@ const TestScores = (props) => {
     )
   })
 
-  if (active === stuId) {
+  if (active.includes(stuId)) {
     name = "average-scores-show"
   } else {
     name = "average-scores-hide"

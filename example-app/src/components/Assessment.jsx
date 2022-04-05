@@ -8,7 +8,7 @@ const Assessment = () => {
 
   const [request, setRequest] = useState([])
   const [filter, setfilter] = useState([])
-  const [isActive, setIsActive] = useState(0)
+  const [isActive, setIsActive] = useState([0])
 
   const getInfo = () => {
     axios.get("https://api.hatchways.io/assessment/students")
@@ -27,21 +27,14 @@ const Assessment = () => {
   const studentList = filter.map((student, index) => {
 
     const toggleClass = (id) => {
-      if (isActive !== student.id) {
-        setIsActive(id)
+      if (isActive.includes(id)) {
+        setIsActive(isActive.filter((stu) => { return stu !== id }))
       } else {
-        setIsActive(0)
+        setIsActive([...isActive].concat([id]))
       }
     }
 
-
     let average = Math.round(calculateAverage(student.grades) * 100) / 100;
-
-    // let scores = student.grades.map((test, index) => {
-    //   return (
-    //     <p key={index}> Test {index + 1} : {test} %</p>
-    //   )
-    // })
 
     return (
       <div className="student" key={index}>
@@ -62,7 +55,7 @@ const Assessment = () => {
           </div>
         </div>
         <div className="expand">
-          <button onClick={() => toggleClass(student.id)}>hi</button>
+          <button onClick={() => toggleClass(student.id)}> + </button>
         </div>
       </div>
     )
