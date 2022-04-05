@@ -5,9 +5,7 @@ const TestScores = (props) => {
   let name = "average-scores-show";
 
   const scores = grades.map((test, index) => {
-    return (
-      <p key={index + test}> Test {index + 1} : {test} %</p>
-    )
+    return (<p key={index + test}> Test {index + 1} : {test} %</p>)
   })
 
   if (expand.includes(stuId)) {

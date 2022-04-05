@@ -23,6 +23,22 @@ const Assessment = () => {
       })
   }
 
+  const searchbar = (key) => { //uses original data to filter names. does not work with tags
+    setfilter([...data].filter((student) => {
+      if (student.firstName.toLowerCase().includes(key) || student.lastName.toLowerCase().includes(key)) { return student; }
+    }))
+  }
+
+  const searchtag = (key) => { //uses original data to filter names. does not work with search
+    setfilter([...data].filter((student) => {
+      let found = false;
+      student.tag.forEach((tag) => { if (tag.toLowerCase().includes(key)) { found = true } })
+      if (found) { return student }
+    }))
+
+    if (key === "") { setfilter(data) } //reset when blank
+  }
+
   const calculateAverage = (grades) => { //return average
     let sum = 0;
     grades.forEach((grade) => { sum += Number(grade) })
@@ -67,22 +83,6 @@ const Assessment = () => {
       </div>
     )
   })
-
-  const searchbar = (key) => { //uses original data to filter names. does not work with tags
-    setfilter([...data].filter((student) => {
-      if (student.firstName.toLowerCase().includes(key) || student.lastName.toLowerCase().includes(key)) { return student; }
-    }))
-  }
-
-  const searchtag = (key) => { //uses original data to filter names. does not work with search
-    setfilter([...data].filter((student) => {
-      let found = false;
-      student.tag.forEach((tag) => { if (tag.toLowerCase().includes(key)) { found = true } })
-      if (found) { return student }
-    }))
-
-    if (key === "") { setfilter(data) } //reset when blank
-  }
 
   useEffect(() => { //load async data on page load
     getInfo();

@@ -6,14 +6,12 @@ const Tags = (props) => {
 
   const addTag = (value) => {
     let copy = [...data];
-    copy[stuId].tag.push(value)
+    copy[stuId].tag.push(value);
     setdata(copy)
   }
 
   const myTags = data[stuId].tag.map((tag, index) => {
-    return (
-      <button key={index}> {tag} </button>
-    )
+    return (<button key={index}> {tag} </button>)
   })
 
   return (
