@@ -16,9 +16,8 @@ const Assessment = () => {
       .then(res => {
         let list = res.data.students;
         list.forEach((student) => {
-          student.tag = [student.firstName]
+          student.tag = []
         })
-
         setRequest(list)
         setfilter(list)
       })
@@ -84,6 +83,8 @@ const Assessment = () => {
       })
       if (found) { console.log("yes"); return student }
     }))
+
+
   }
 
   useEffect(() => {

@@ -5,16 +5,14 @@ const Tags = (props) => {
   const { request, setRequest, stuId } = props;
 
   const addTag = (value) => {
-
     let copy = [...request];
     copy[stuId].tag.push(value)
     setRequest(copy)
-
   }
 
   const myTags = request[stuId].tag.map((tag) => {
     return (
-      <button> {tag} </button>
+      <button key={tag}> {tag} </button>
     )
   })
 
