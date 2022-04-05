@@ -8,6 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   border-bottom: 1px solid black;
 }
 
@@ -18,6 +19,7 @@ body {
   font-size: 2vw;
   font-weight: 100;
   border: none;
+  border-bottom: 1px solid black;
   outline: none;
 }
 
@@ -85,4 +87,13 @@ body {
 .average-scores-hide {
   display: none;
   margin-top: 10px;
+}
+
+.expand {
+  height: 10vh;
+  width: 10vh;
+  font-size: 10vh;
+  background-color: white;
+  border: none;
+  color: gray;
 }

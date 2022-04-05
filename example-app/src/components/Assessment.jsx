@@ -26,12 +26,16 @@ const Assessment = () => {
 
   const studentList = filter.map((student, index) => {
 
+    // student.show = !student.show;
+    // console.log(student.show)
 
     const toggleClass = (id) => {
       if (isActive.includes(id)) {
         setIsActive(isActive.filter((stu) => { return stu !== id }))
+        student.show = !student.show;
       } else {
         setIsActive([...isActive].concat([id]))
+        student.show = !student.show;
       }
     }
 
@@ -56,7 +60,7 @@ const Assessment = () => {
           </div>
         </div>
         <div className="expand">
-          <button onClick={() => toggleClass(student.id)}> + </button>
+          <button className="expand" onClick={() => toggleClass(student.id)}> {student.show ? "-" : "+"} </button>
         </div>
       </div>
     )
@@ -74,10 +78,14 @@ const Assessment = () => {
     getInfo();
   }, [])
 
+  useEffect(() => {
+  }, [isActive])
+
   return (
     <div id="information">
       <div id="header">
         <input className="search" type="text" placeholder="Search by name" onChange={(e) => { searchbar(e.target.value.toUpperCase()) }} />
+        <input className="search" type="text" placeholder="Search by tag" onChange={(e) => { searchbar(e.target.value.toUpperCase()) }} />
       </div>
       {studentList}
     </div>
