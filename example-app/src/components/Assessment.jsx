@@ -6,6 +6,8 @@ import "./assessment.css"
 const Assessment = () => {
 
   const [request, setRequest] = useState([])
+  const [filter, setfilter] = useState([])
+
 
   const getInfo = () => {
     axios.get("https://api.hatchways.io/assessment/students")
@@ -20,7 +22,7 @@ const Assessment = () => {
     return sum / grades.length;
   }
 
-  const studentList = request.map((student) => {
+  const studentList = filter.map((student) => {
 
     let average = Math.round(calculateAverage(student.grades) * 100) / 100;
 
@@ -40,26 +42,25 @@ const Assessment = () => {
         </div>
       </div>
     )
-
   })
+
 
   const searchbar = (key) => {
 
-    let requestCopy = [...request];
+    let filter = [...request];
 
-    studentList(requestCopy.filter((student) => {
-      return student.firstName.toUpperCase().includes(key)
+    setfilter(filter.filter((student) => {
+      if (student.firstName.toUpperCase().includes(key) || student.lastName.toUpperCase().includes(key)) {
+        return student;
+      }
     })
     )
+
   }
 
   useEffect(() => {
     getInfo();
   }, [])
-
-  useEffect(() => {
-
-  }, [request])
 
   return (
     <div id="information">
